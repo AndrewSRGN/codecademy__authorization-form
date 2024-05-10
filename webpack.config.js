@@ -13,7 +13,10 @@ module.exports = {
                 test: /\.(js|jsx)/i,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader"
+                    loader: "babel-loader",
+                    options: {
+                        presets: ["@babel/preset-env", "@babel/preset-react"]
+                    }
                 }
             },
             {
@@ -21,5 +24,12 @@ module.exports = {
                 use: ["style-loader", "css-loader"]
             }
         ]
+    },
+    devServer: {
+        static: {
+            directory: path.join(__dirname, '.'),
+        },
+        compress: true,
+        port: 9000
     }
 }
